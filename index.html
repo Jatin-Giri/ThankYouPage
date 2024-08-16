@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🙏☺😊...Thank You...😊☺🙏</title>
+    <link rel="icon" type="image/png" href="outer-space.png">
+    <style>
+      html {
+        color-scheme: dark;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: 0;
+        font-family: "Courier New", Courier, monospace;
+      }
+      body {
+        cursor: url("./wand2.cur"), auto;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      a {
+        text-decoration: none;
+        padding: 5px 10px;
+        color: #fff;
+        border: 2px solid #fff;
+        width: 150px;
+        text-align: center;
+        font-size: 20px;
+        transition: all 0.3s ease;
+      }
+      a:hover {
+        background-color: #fff;
+        color: #000;
+      }
+
+      :root {
+        --animation-time: 2s;
+      }
+      .cursor {
+        z-index: 999;
+        position: fixed;
+      }
+      .click-animation {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .shape {
+        position: absolute;
+        opacity: 0;
+      }
+
+      /* Circle */
+
+      .circle {
+        width: 40px;
+        aspect-ratio: 1;
+        border: 2px solid #4fb4f8;
+        border-radius: 50%;
+      }
+      .small {
+        width: 20px;
+        border: 1px solid #2ca8fa;
+      }
+      .cursor.active .circle {
+        animation: click-circle var(--animation-time) ease-out infinite;
+      }
+      @keyframes click-circle {
+        0% {
+          opacity: 0;
+        }
+        5% {
+          opacity: 1;
+        }
+        30% {
+          opacity: 0;
+          transform: scale(3);
+        }
+      }
+
+      /* triangle */
+
+      .triangle {
+        position: absolute;
+        border-style: solid;
+        border-width: 0px 5px 10px 5px;
+        border-color: transparent transparent yellow transparent;
+      }
+      .cursor.active .triangle {
+        animation: click-triangle var(--animation-time) ease-out infinite;
+      }
+      @keyframes click-triangle {
+        0% {
+          opacity: 0;
+        }
+        5% {
+          opacity: 1;
+        }
+        40% {
+          opacity: 0;
+          transform: scale(2.5) translate(50px, -50px) rotate(360deg);
+        }
+      }
+
+      .green {
+        border-width: 0px 3.5px 7px 3.5px;
+        border-color: transparent transparent #47eda0 transparent;
+      }
+      .cursor.active .green {
+        animation: click-triangle2 var(--animation-time) ease-out infinite;
+      }
+      @keyframes click-triangle2 {
+        0% {
+          opacity: 0;
+        }
+        5% {
+          opacity: 1;
+        }
+        40% {
+          opacity: 0;
+          transform: scale(2.5) translate(50px, 50px) rotate(360deg);
+        }
+      }
+
+      /* Disc */
+
+      .disc {
+        width: 8.5px;
+        aspect-ratio: 1;
+        background: #d563f8;
+        border-radius: 50%;
+      }
+      .cursor.active .disc {
+        animation: click-disc var(--animation-time) ease-out infinite;
+      }
+      @keyframes click-disc {
+        0% {
+          opacity: 0;
+        }
+        5% {
+          opacity: 1;
+        }
+        40% {
+          opacity: 0;
+          transform: scale(2) translate(-70px, -30px);
+        }
+      }
+
+      img {
+        width: 35px;
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Thanks You</h1>
+    <a href="/index.html">Back</a>
+
+    <div class="cursor">
+      <div class="click-animation">
+        <div class="shape circle big"></div>
+        <div class="shape circle small"></div>
+        <div class="shape triangle yellow"></div>
+        <div class="shape triangle green"></div>
+        <div class="shape disc"></div>
+      </div>
+    </div>
+    <!-- <img src="wand.png" alt="wand"> -->
+
+    <script>
+      const cursor = document.querySelector(".cursor");
+      const wand = document.querySelector("img");
+      const cursors = document.querySelectorAll(".cursor");
+
+      // document.addEventListener("mousemove", (e) => {
+      /*
+
+      document.addEventListener("mousemove", (e) => {
+        let x = e.clientX;
+        let y = e.clientY;
+
+        cursor.style.top = y + "px";
+        cursor.style.left = x + "px";
+
+        // wand.style.top = y+"px";
+        // wand.style.left = x+"px";
+
+        cursors.forEach((cur) => {
+          cur.classList.add("active");
+
+          function removecursorActive() {
+            cur.classList.remove("active");
+          }
+
+          setTimeout(removecursorActive, 1000);
+        });
+
+        let cursorClone = cursor.cloneNode(true);
+        document.querySelector("body").appendChild(cursorClone);
+
+        setTimeout(() => {
+          cursorClone.remove();
+        }, 1000);
+      });
+      */
+
+      document.addEventListener("click", (e) => {
+        let x = e.clientX;
+        let y = e.clientY;
+
+        cursor.style.top = y + "px";
+        cursor.style.left = x + "px";
+
+        // wand.style.top = y+"px";
+        // wand.style.left = x+"px";
+
+        cursors.forEach((cur) => {
+          cur.classList.add("active");
+
+          function removecursorActive() {
+            cur.classList.remove("active");
+          }
+
+          setTimeout(removecursorActive, 1000);
+        });
+
+        let cursorClone = cursor.cloneNode(true);
+        document.querySelector("body").appendChild(cursorClone);
+
+        setTimeout(() => {
+          cursorClone.remove();
+        }, 1000);
+      });
+      
+      document.addEventListener("touchstart", (e) => {
+        let x = e.clientX;
+        let y = e.clientY;
+
+        cursor.style.top = y + "px";
+        cursor.style.left = x + "px";
+
+        // wand.style.top = y+"px";
+        // wand.style.left = x+"px";
+
+        cursors.forEach((cur) => {
+          cur.classList.add("active");
+
+          function removecursorActive() {
+            cur.classList.remove("active");
+          }
+
+          setTimeout(removecursorActive, 1000);
+        });
+
+        let cursorClone = cursor.cloneNode(true);
+        document.querySelector("body").appendChild(cursorClone);
+
+        setTimeout(() => {
+          cursorClone.remove();
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
